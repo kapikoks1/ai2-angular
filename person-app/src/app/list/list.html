@@ -1,0 +1,11 @@
+<h2>Lista osób</h2>
+<button routerLink="/add">Dodaj nową osobę</button>
+
+<ul>
+  <li *ngFor="let person of persons; let i = index">
+    <a [routerLink]="['/details', i]">{{ person.firstName }} {{ person.familyName }} ({{ person.age }})</a>
+    <button (click)="deletePerson(i)">Usuń</button>
+  </li>
+</ul>
+
+<p *ngIf="persons.length === 0">Brak zapisanych osób.</p>
