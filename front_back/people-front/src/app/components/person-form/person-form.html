@@ -1,0 +1,15 @@
+<div class="container">
+  <h2>{{id ? 'Edytuj osobę' : 'Dodaj osobę'}}</h2>
+  <form (ngSubmit)="save()">
+    <label>Imię:</label>
+    <input type="text" [(ngModel)]="person.firstName" name="firstName" required>
+    
+    <label>Nazwisko:</label>
+    <input type="text" [(ngModel)]="person.lastName" name="lastName" required>
+    
+    <label>Wiek:</label>
+    <input type="number" [(ngModel)]="person.age" name="age" required>
+    
+    <button type="submit">{{id ? 'Zapisz zmiany' : 'Dodaj'}}</button>
+  </form>
+</div>

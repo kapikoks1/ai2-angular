@@ -1,0 +1,33 @@
+<div class="container">
+  <h2>Lista osób</h2>
+  <button class="add-btn" (click)="addPerson()">➕ Dodaj osobę</button>
+
+  <div *ngIf="loading" class="info">Ładowanie danych...</div>
+  <div *ngIf="error" class="error">{{ error }}</div>
+
+  <table *ngIf="!loading && people.length > 0">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Imię</th>
+        <th>Nazwisko</th>
+        <th>Wiek</th>
+        <th>Akcje</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let p of people">
+        <td>{{p.id}}</td>
+        <td>{{p.firstName}}</td>
+        <td>{{p.lastName}}</td>
+        <td>{{p.age}}</td>
+        <td>
+          <button (click)="editPerson(p.id)">Edytuj</button>
+          <button (click)="deletePerson(p.id)">Usuń</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="!loading && people.length === 0" class="empty">Brak osób w bazie.</div>
+</div>
