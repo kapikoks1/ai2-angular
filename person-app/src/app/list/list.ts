@@ -1,13 +1,16 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common'; 
 import { RouterModule } from '@angular/router';
 import { Person } from '../Person/person';
 import { PersonService } from '../person';
+import { MatListModule } from '@angular/material/list';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { NgFor, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-list',
   standalone: true,
-  imports: [CommonModule, RouterModule], 
+  imports: [NgFor, NgIf, RouterModule, MatListModule, MatButtonModule, MatIconModule],
   templateUrl: './list.html',
 })
 export class ListComponent {
@@ -26,5 +29,9 @@ export class ListComponent {
   deletePerson(index: number) {
     this.personService.deleteByIndex(index);
     this.loadPersons();
+  }
+
+  trackByIndex(index: number, item: Person) {
+    return index;
   }
 }

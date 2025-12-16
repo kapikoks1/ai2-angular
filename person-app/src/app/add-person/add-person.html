@@ -1,21 +1,44 @@
 <h2>Dodaj nową osobę</h2>
+
 <form (ngSubmit)="save()">
-  <label>Imię:</label>
-  <input type="text" [(ngModel)]="person.firstName" name="firstName">
 
-  <label>Nazwisko:</label>
-  <input type="text" [(ngModel)]="person.familyName" name="familyName">
+  <!-- Imię -->
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Imię</mat-label>
+    <input matInput [(ngModel)]="person.firstName" name="firstName" required>
+  </mat-form-field>
 
-  <label>Wiek:</label>
-  <input type="number" [(ngModel)]="person.age" name="age">
+  <!-- Nazwisko -->
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Nazwisko</mat-label>
+    <input matInput [(ngModel)]="person.familyName" name="familyName" required>
+  </mat-form-field>
 
+  <!-- Wiek -->
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Wiek</mat-label>
+    <input matInput type="number" [(ngModel)]="person.age" name="age">
+  </mat-form-field>
+
+  <!-- Adres -->
   <h3>Adres</h3>
-  <label>Miasto:</label>
-  <input type="text" [(ngModel)]="person.address.city" name="city">
-  <label>Ulica:</label>
-  <input type="text" [(ngModel)]="person.address.street" name="street">
-  <label>Kod pocztowy:</label>
-  <input type="text" [(ngModel)]="person.address.postCode" name="postCode">
 
-  <button type="submit">Zapisz</button>
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Miasto</mat-label>
+    <input matInput [(ngModel)]="person.address.city" name="city">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Ulica</mat-label>
+    <input matInput [(ngModel)]="person.address.street" name="street">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Kod pocztowy</mat-label>
+    <input matInput [(ngModel)]="person.address.postCode" name="postCode">
+  </mat-form-field>
+
+  <!-- Przyciski -->
+  <button mat-raised-button color="primary" type="submit">Zapisz</button>
+  <button mat-button type="button" routerLink="/">Anuluj</button>
 </form>

@@ -1,11 +1,20 @@
 <h2>Lista osób</h2>
-<button routerLink="/add">Dodaj nową osobę</button>
 
-<ul>
-  <li *ngFor="let person of persons; let i = index">
-    <a [routerLink]="['/details', i]">{{ person.firstName }} {{ person.familyName }} ({{ person.age }})</a>
-    <button (click)="deletePerson(i)">Usuń</button>
-  </li>
-</ul>
+<button mat-raised-button color="primary" routerLink="/add">
+  Dodaj nową osobę
+</button>
 
-<p *ngIf="persons.length === 0">Brak zapisanych osób.</p>
+<mat-list *ngIf="persons.length > 0; else emptyList">
+  <mat-list-item *ngFor="let person of persons; let i = index; trackBy: trackByIndex">
+    <a [routerLink]="['/details', i]">
+      {{ person.firstName }} {{ person.familyName }} ({{ person.age }})
+    </a>
+    <button mat-icon-button color="warn" (click)="deletePerson(i)">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </mat-list-item>
+</mat-list>
+
+<ng-template #emptyList>
+  <p>Brak zapisanych osób.</p>
+</ng-template>

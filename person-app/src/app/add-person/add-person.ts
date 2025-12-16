@@ -3,11 +3,15 @@ import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Person } from '../Person/person';
 import { PersonService } from '../person';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-add-person',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, MatInputModule, MatButtonModule, MatCheckboxModule, NgIf],
   templateUrl: './add-person.html',
 })
 export class AddPersonComponent {
